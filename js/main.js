@@ -1,16 +1,25 @@
 console.log('hello main');
 
-async function getData (location, apiKey) {
-    const data = await fetch(`http://api.weatherapi.com/v1/current.json?q=${location}&key=${apiKey}`);
+async function getData (apiKey) {
+    const data = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`);
     const result = await data.json();
   
-    const city = result.location.name;
+    const calendar = result.date;
+    const image = result.hdurl;
+    const expl = result.explanation;
     //console.log(city);
 
     const containerResult = document.getElementById('data-container')
     containerResult.innerHTML = `
-    <p>The 6ix is known as ${city} sway</p>
+    
+    <img src="${image}"> </img>
+
+    <p>This image was captured on ${calendar}</p>
+
+    <h3> What are on NASA's thoughs? </h3>
+
+    <p> ${expl} </p>
     `
 }
 
-getData('Toronto', "59a915c9f6154b7e88e212909240606");
+getData("WTbkPb7oLaWkieOEWDJjBy9gMdvjB74rMawzHR2C");
