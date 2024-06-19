@@ -1,7 +1,7 @@
 console.log('hello main');
 
-async function getData (apiKey) {
-    const data = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`);
+async function getData (todaysDate, apiKey) {
+    const data = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}`);
     const result = await data.json();
   
     const calendar = result.date;
@@ -22,4 +22,4 @@ async function getData (apiKey) {
     `
 }
 
-getData("WTbkPb7oLaWkieOEWDJjBy9gMdvjB74rMawzHR2C");
+getData("2024-06-19", "WTbkPb7oLaWkieOEWDJjBy9gMdvjB74rMawzHR2C");
